@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 68" fill="none">
+    <rect width="240" height="68" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <g transform="translate(14, 16)">
+      <rect width="36" height="36" rx="6" fill="#E3062E" fill-opacity="0.12"/>
+      <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 4l-10-5v6l10 5 10-5v-6l-10 5z" fill="#E3062E" transform="scale(1) translate(6, 6)"/>
+    </g>
+    <text x="60" y="32" font-family="'Montserrat', sans-serif" font-weight="800" font-size="14" fill="#0D2B6B" letter-spacing="-0.01em">QUANTUM</text>
+    <text x="60" y="47" font-family="'Inter', sans-serif" font-weight="600" font-size="9" fill="#75829C" letter-spacing="0.08em">INDUSTRIAL AI</text>
+  </svg>

@@ -1,0 +1,1043 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600;1,700;1,800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #0D2B6B;
+  --color-blue: #0066E0;
+  --color-red: #E3062E;
+  --color-gray: #E6E9F2;
+  --color-white: #FFFFFF;
+  --color-accent: #0066E0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #0D2B6B;
+  background-color: #FFFFFF;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Smooth motion & cubic-bezier easing utilities (250ms-400ms, transform & opacity only) */
+.smooth-transition {
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+/* =========================================================================
+   ITCG Modular Geometric System: Entrance Choreography (Phase 3)
+   ========================================================================= */
+
+/* Kinetic Arcs Pulse Flow along PathLength=100 */
+@keyframes kineticArcFlow {
+  0% {
+    stroke-dashoffset: 25;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
+.animate-kinetic-arc {
+  animation-name: kineticArcFlow;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: stroke-dashoffset;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-kinetic-arc {
+    animation: none !important;
+    opacity: 0.35;
+  }
+}
+
+/* Step 1: Background Diagonal Geometric Planes Entrance (0ms - 1200ms) */
+@keyframes bgPlaneEnterLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-70px, -40px, 0) skewX(-30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) skewX(-30deg);
+  }
+}
+
+@keyframes bgPlaneEnterRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(70px, 40px, 0) skewX(-30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) skewX(-30deg);
+  }
+}
+
+.hero-bg-plane-left {
+  animation: bgPlaneEnterLeft 1200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-bg-plane-right {
+  animation: bgPlaneEnterRight 1400ms cubic-bezier(0.22, 1, 0.36, 1) both 100ms;
+}
+
+/* Step 2 & 3: Staggered Headline, Description & CTA Entrance */
+@keyframes heroFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animate-in {
+  animation: heroFadeInUp 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 350ms; }
+.delay-400 { animation-delay: 500ms; }
+.delay-500 { animation-delay: 650ms; }
+.delay-600 { animation-delay: 800ms; }
+
+/* =========================================================================
+   ITCG Modular Geometric Layered Cards: Staggered Reveal & Subtle Float
+   ========================================================================= */
+
+@keyframes modularCardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes layeredFloat1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes layeredFloat2 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@keyframes layeredFloat3 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2.5px);
+  }
+}
+
+.anim-card-reveal-1 {
+  animation: modularCardReveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both 150ms;
+}
+
+.anim-card-reveal-2 {
+  animation: modularCardReveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both 320ms;
+}
+
+.anim-card-reveal-3 {
+  animation: modularCardReveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both 490ms;
+}
+
+.anim-layered-float-1 {
+  animation: layeredFloat1 6.5s ease-in-out infinite 850ms;
+  will-change: transform;
+}
+
+.anim-layered-float-2 {
+  animation: layeredFloat2 7s ease-in-out infinite 1000ms;
+  will-change: transform;
+}
+
+.anim-layered-float-3 {
+  animation: layeredFloat3 6s ease-in-out infinite 1150ms;
+  will-change: transform;
+}
+
+/* SVG Transform context fix for reliable cross-browser SVG animations */
+.p6-plate-top,
+.p6-plate-mid,
+.p6-plate-bottom,
+.p6-module-1,
+.p6-module-2,
+.p6-module-3,
+.p6-connector-rail,
+.p6-datum-node {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Stage 1: Three Geometric Base Plates Enter from Different Directions */
+@keyframes p6PlateEnterTopRight {
+  0% {
+    opacity: 0;
+    transform: translate(180px, -90px) scale(0.88);
+  }
+  75% {
+    opacity: 0.95;
+    transform: translate(-4px, 2px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes p6PlateEnterLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-180px, 0px) scale(0.88);
+  }
+  75% {
+    opacity: 0.95;
+    transform: translate(4px, 0px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes p6PlateEnterBottomRight {
+  0% {
+    opacity: 0;
+    transform: translate(160px, 100px) scale(0.88);
+  }
+  75% {
+    opacity: 0.95;
+    transform: translate(-3px, -2px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.p6-plate-top {
+  animation: p6PlateEnterTopRight 850ms cubic-bezier(0.16, 1, 0.3, 1) both 0ms;
+}
+
+.p6-plate-mid {
+  animation: p6PlateEnterLeft 900ms cubic-bezier(0.16, 1, 0.3, 1) both 120ms;
+}
+
+.p6-plate-bottom {
+  animation: p6PlateEnterBottomRight 900ms cubic-bezier(0.16, 1, 0.3, 1) both 240ms;
+}
+
+/* Stage 3: Structural Connector Lines & Datum Nodes Draw into Position */
+@keyframes p6RailDraw {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 260;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes p6NodePop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.p6-connector-rail {
+  stroke-dasharray: 260;
+  animation: p6RailDraw 750ms cubic-bezier(0.16, 1, 0.3, 1) both 900ms;
+}
+
+.p6-datum-node {
+  animation: p6NodePop 500ms cubic-bezier(0.16, 1, 0.3, 1) both 1100ms;
+}
+
+/* Stage 4 & 5: Three Technology Modules Sequential Appearance & Mechanical Settle */
+@keyframes p6ModuleEnterTop {
+  0% {
+    opacity: 0;
+    transform: translate(90px, -45px) scale(0.94);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(-2px, 1px) scale(1.005);
+  }
+  90% {
+    transform: translate(1px, -0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes p6ModuleEnterMid {
+  0% {
+    opacity: 0;
+    transform: translate(-90px, 0px) scale(0.94);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(2px, 0px) scale(1.005);
+  }
+  90% {
+    transform: translate(-1px, 0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes p6ModuleEnterBottom {
+  0% {
+    opacity: 0;
+    transform: translate(90px, 45px) scale(0.94);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(-2px, -1px) scale(1.005);
+  }
+  90% {
+    transform: translate(1px, 0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.p6-module-1 {
+  animation: p6ModuleEnterTop 850ms cubic-bezier(0.16, 1, 0.3, 1) both 1150ms;
+}
+
+.p6-module-2 {
+  animation: p6ModuleEnterMid 850ms cubic-bezier(0.16, 1, 0.3, 1) both 1400ms;
+}
+
+.p6-module-3 {
+  animation: p6ModuleEnterBottom 850ms cubic-bezier(0.16, 1, 0.3, 1) both 1650ms;
+}
+
+/* Stage 6: Restrained Micro-Movement along Selected Geometric Edges (After 2400ms) */
+@keyframes p6EdgePulseLeft {
+  0% {
+    transform: translateY(0);
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(140px);
+    opacity: 0.2;
+  }
+}
+
+@keyframes p6EdgePulseRight {
+  0% {
+    transform: translateY(0);
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(-140px);
+    opacity: 0.2;
+  }
+}
+
+.p6-edge-pulse-left {
+  animation: p6EdgePulseLeft 5.5s linear infinite 2400ms;
+}
+
+.p6-edge-pulse-right {
+  animation: p6EdgePulseRight 5.5s linear infinite 2400ms;
+}
+
+/* Legacy Step 4: Diagonal Entrance */
+@keyframes pillarEnterTop {
+  0% {
+    opacity: 0;
+    transform: translate(50px, -35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes pillarEnterMid {
+  0% {
+    opacity: 0;
+    transform: translate(-50px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes pillarEnterBottom {
+  0% {
+    opacity: 0;
+    transform: translate(50px, 35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.hero-pillar-enter-1 {
+  animation: pillarEnterTop 1000ms cubic-bezier(0.22, 1, 0.36, 1) both 350ms;
+}
+
+.hero-pillar-enter-2 {
+  animation: pillarEnterMid 1000ms cubic-bezier(0.22, 1, 0.36, 1) both 550ms;
+}
+
+.hero-pillar-enter-3 {
+  animation: pillarEnterBottom 1000ms cubic-bezier(0.22, 1, 0.36, 1) both 750ms;
+}
+
+/* Step 5: Connecting Data Bus Lines & Nodes Reveal */
+@keyframes busLinesReveal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hero-bus-reveal {
+  animation: busLinesReveal 900ms cubic-bezier(0.22, 1, 0.36, 1) both 700ms;
+}
+
+.smooth-card {
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, box-shadow;
+}
+
+.smooth-card:hover {
+  transform: translateY(-3px);
+}
+
+/* 30-degree slanted modular geometric ribbons & cuts */
+.slant-30 {
+  transform: skewX(-30deg);
+}
+
+.slant-30-reverse {
+  transform: skewX(30deg);
+}
+
+.unskew-30 {
+  transform: skewX(30deg);
+}
+
+/* Modular Geometric Section Accents */
+.modular-accent-bar {
+  position: relative;
+  overflow: hidden;
+}
+.modular-accent-bar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #0D2B6B 0%, #0066E0 50%, #E3062E 100%);
+}
+
+/* =========================================================================
+   Official ITCG Modular Geometric System (Clean Solid Surfaces, No Repetitive Grid)
+   ========================================================================= */
+.bg-modular-white {
+  background-color: #FFFFFF;
+}
+
+.bg-modular-gray {
+  background-color: #F4F6FA;
+}
+
+.bg-modular-navy {
+  background-color: #0D2B6B;
+}
+
+/* Backward-compatible solid neutral surface tokens */
+.bg-architectural {
+  background-color: #FFFFFF;
+}
+
+.bg-architectural-dark {
+  background-color: #0D2B6B;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================================
+   Tech Motion & Pillar Animation Keyframes (Intelligence in Motion)
+   ========================================================================= */
+@keyframes dataStreamFlow {
+  from {
+    stroke-dashoffset: 40;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dataStreamFlowRev {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 40;
+  }
+}
+
+@keyframes floatPillar1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes floatPillar2 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+@keyframes floatPillar3 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes sequentialHighlightBlue1 {
+  0%, 33.3% {
+    border-color: #0066E0;
+    box-shadow: 0 0 16px rgba(0, 102, 224, 0.45);
+  }
+  38%, 100% {
+    border-color: rgba(0, 102, 224, 0.3);
+    box-shadow: none;
+  }
+}
+
+@keyframes sequentialHighlightBlue2 {
+  0%, 30% {
+    border-color: rgba(0, 102, 224, 0.3);
+    box-shadow: none;
+  }
+  33.3%, 66.6% {
+    border-color: #0066E0;
+    box-shadow: 0 0 16px rgba(0, 102, 224, 0.45);
+  }
+  71%, 100% {
+    border-color: rgba(0, 102, 224, 0.3);
+    box-shadow: none;
+  }
+}
+
+@keyframes sequentialHighlightRed3 {
+  0%, 63% {
+    border-color: rgba(227, 6, 46, 0.3);
+    box-shadow: none;
+  }
+  66.6%, 100% {
+    border-color: #E3062E;
+    box-shadow: 0 0 16px rgba(227, 6, 46, 0.5);
+  }
+}
+
+.pillar-seq-1 {
+  animation: sequentialHighlightBlue1 4.5s ease-in-out infinite;
+}
+
+.pillar-seq-2 {
+  animation: sequentialHighlightBlue2 4.5s ease-in-out infinite;
+}
+
+.pillar-seq-3 {
+  animation: sequentialHighlightRed3 4.5s ease-in-out infinite;
+}
+
+.pillar-card-hover {
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.pillar-card-hover:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 24px rgba(0, 102, 224, 0.35);
+}
+
+.pillar-card-hover-red {
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.pillar-card-hover-red:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 24px rgba(227, 6, 46, 0.4);
+}
+
+/* =========================================================================
+   White Card Staggered Entrance & Sequential Pulse Animations
+   ========================================================================= */
+@keyframes cardSlideIn1 {
+  0% {
+    opacity: 0;
+    transform: translate(24px, 16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes cardSlideIn2 {
+  0% {
+    opacity: 0;
+    transform: translate(-24px, 16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes cardSlideIn3 {
+  0% {
+    opacity: 0;
+    transform: translate(24px, 16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.hero-card-enter-1 {
+  animation: cardSlideIn1 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards 0.15s;
+}
+
+.hero-card-enter-2 {
+  animation: cardSlideIn2 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards 0.35s;
+}
+
+.hero-card-enter-3 {
+  animation: cardSlideIn3 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards 0.55s;
+}
+
+/* Sequential Active Pulse on White Cards (Pillar 1 -> Pillar 2 -> Pillar 3) */
+@keyframes seqPulseWhite1 {
+  0%, 33.3% {
+    border-color: #0066E0;
+    box-shadow: 0 10px 25px -5px rgba(0, 102, 224, 0.25);
+  }
+  38%, 100% {
+    border-color: #E6E9F2;
+    box-shadow: 0 4px 12px -2px rgba(13, 43, 107, 0.06);
+  }
+}
+
+@keyframes seqPulseWhite2 {
+  0%, 30% {
+    border-color: #E6E9F2;
+    box-shadow: 0 4px 12px -2px rgba(13, 43, 107, 0.06);
+  }
+  33.3%, 66.6% {
+    border-color: #0066E0;
+    box-shadow: 0 10px 25px -5px rgba(0, 102, 224, 0.25);
+  }
+  71%, 100% {
+    border-color: #E6E9F2;
+    box-shadow: 0 4px 12px -2px rgba(13, 43, 107, 0.06);
+  }
+}
+
+@keyframes seqPulseWhite3 {
+  0%, 63% {
+    border-color: #E6E9F2;
+    box-shadow: 0 4px 12px -2px rgba(13, 43, 107, 0.06);
+  }
+  66.6%, 100% {
+    border-color: #E3062E;
+    box-shadow: 0 10px 25px -5px rgba(227, 6, 46, 0.25);
+  }
+}
+
+.card-seq-1 {
+  animation: seqPulseWhite1 10.5s ease-in-out infinite;
+}
+
+.card-seq-2 {
+  animation: seqPulseWhite2 10.5s ease-in-out infinite;
+}
+
+.card-seq-3 {
+  animation: seqPulseWhite3 10.5s ease-in-out infinite;
+}
+
+/* =========================================================================
+   ITCG Modular Headline Shutter Reveal & Kinetic Step Rotation
+   ========================================================================= */
+
+@keyframes headlineBlockWipe {
+  0% {
+    transform: translate3d(-102%, 0, 0);
+  }
+  42%, 58% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(102%, 0, 0);
+  }
+}
+
+@keyframes headlineTextReveal {
+  0%, 46% {
+    opacity: 0;
+    transform: translate3d(0, 4px, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes headlineAccentPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 90-degree Step Rotation every 3.5s (14s total cycle: 4 x 3.5s) */
+@keyframes kineticStepRotate90 {
+  0%, 22.8% {
+    transform: rotate(0deg);
+  }
+  25%, 47.8% {
+    transform: rotate(90deg);
+  }
+  50%, 72.8% {
+    transform: rotate(180deg);
+  }
+  75%, 97.8% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.headline-block-reveal-1 {
+  animation: headlineBlockWipe 850ms cubic-bezier(0.22, 1, 0.36, 1) both 150ms;
+  will-change: transform;
+}
+
+.headline-text-reveal {
+  animation: headlineTextReveal 850ms cubic-bezier(0.22, 1, 0.36, 1) both 150ms;
+}
+
+.headline-block-reveal-2 {
+  animation: headlineBlockWipe 850ms cubic-bezier(0.22, 1, 0.36, 1) both 270ms;
+  will-change: transform;
+}
+
+.headline-text-reveal-2 {
+  animation: headlineTextReveal 850ms cubic-bezier(0.22, 1, 0.36, 1) both 270ms;
+}
+
+.headline-accent-enter {
+  animation: headlineAccentPop 500ms cubic-bezier(0.22, 1, 0.36, 1) both 600ms;
+}
+
+.headline-kinetic-accent {
+  animation: kineticStepRotate90 14s cubic-bezier(0.22, 1, 0.36, 1) 1100ms infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* =========================================================================
+   Modular Geometric Tile Step Rotation & Shift Keyframes
+   ========================================================================= */
+@keyframes tileStepRotate {
+  0%, 35% {
+    transform: rotate(0deg);
+  }
+  45%, 85% {
+    transform: rotate(90deg);
+  }
+  95%, 100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes tileStepRotateRev {
+  0%, 35% {
+    transform: rotate(0deg);
+  }
+  45%, 85% {
+    transform: rotate(-90deg);
+  }
+  95%, 100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes tilePulseScale {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+.anim-tile-spin {
+  animation: tileStepRotate 6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-origin: center;
+}
+
+.anim-tile-spin-rev {
+  animation: tileStepRotateRev 6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-origin: center;
+}
+
+.anim-tile-pulse {
+  animation: tilePulseScale 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes junctionPulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+.anim-flow {
+  animation: dataStreamFlow 3.2s linear infinite;
+}
+
+.anim-flow-rev {
+  animation: dataStreamFlowRev 3.2s linear infinite;
+}
+
+.anim-node-1 {
+  animation: floatPillar1 4.5s ease-in-out infinite 0s;
+  will-change: transform;
+}
+
+.anim-node-2 {
+  animation: floatPillar2 4.8s ease-in-out infinite 1.2s;
+  will-change: transform;
+}
+
+.anim-node-3 {
+  animation: floatPillar3 5.2s ease-in-out infinite 2.4s;
+  will-change: transform;
+}
+
+.anim-pulse {
+  animation: junctionPulse 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-origin: center;
+}
+
+.anim-pulse-del {
+  animation: junctionPulse 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite 1.2s;
+  transform-origin: center;
+}
+
+.pillar-interactive {
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), filter 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.pillar-interactive:hover {
+  transform: translateY(-4px);
+}
+
+.pillar-interactive-blue:hover {
+  filter: drop-shadow(0 12px 28px rgba(0, 102, 224, 0.4));
+}
+
+.pillar-interactive-red:hover {
+  filter: drop-shadow(0 12px 28px rgba(227, 6, 46, 0.4));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-flow,
+  .anim-flow-rev,
+  .anim-node-1,
+  .anim-node-2,
+  .anim-node-3,
+  .anim-pulse,
+  .anim-pulse-del,
+  .pillar-seq-1,
+  .pillar-seq-2,
+  .pillar-seq-3,
+  .pillar-card-hover,
+  .pillar-card-hover-red,
+  .hero-card-enter-1,
+  .hero-card-enter-2,
+  .hero-card-enter-3,
+  .card-seq-1,
+  .card-seq-2,
+  .card-seq-3,
+  .anim-tile-spin,
+  .anim-tile-spin-rev,
+  .anim-tile-pulse,
+  .anim-card-reveal-1,
+  .anim-card-reveal-2,
+  .anim-card-reveal-3,
+  .anim-layered-float-1,
+  .anim-layered-float-2,
+  .anim-layered-float-3,
+  .p6-plate-top,
+  .p6-plate-mid,
+  .p6-plate-bottom,
+  .p6-connector-rail,
+  .p6-datum-node,
+  .p6-module-1,
+  .p6-module-2,
+  .p6-module-3,
+  .p6-edge-pulse-left,
+  .p6-edge-pulse-right,
+  .hero-animate-in,
+  .hero-bg-plane-left,
+  .hero-bg-plane-right,
+  .hero-pillar-enter-1,
+  .hero-pillar-enter-2,
+  .hero-pillar-enter-3,
+  .hero-bus-reveal,
+  .headline-text-reveal,
+  .headline-text-reveal-2,
+  .headline-accent-enter,
+  .headline-kinetic-accent {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+  }
+
+  .headline-block-reveal-1,
+  .headline-block-reveal-2 {
+    display: none !important;
+  }
+}

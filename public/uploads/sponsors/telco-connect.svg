@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 68" fill="none">
+    <rect width="240" height="68" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <g transform="translate(14, 16)">
+      <rect width="36" height="36" rx="6" fill="#0066E0" fill-opacity="0.12"/>
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#0066E0" transform="scale(1) translate(6, 6)"/>
+    </g>
+    <text x="60" y="32" font-family="'Montserrat', sans-serif" font-weight="800" font-size="14" fill="#0D2B6B" letter-spacing="-0.01em">TELCO CONNECT</text>
+    <text x="60" y="47" font-family="'Inter', sans-serif" font-weight="600" font-size="9" fill="#75829C" letter-spacing="0.08em">5G ENTERPRISE</text>
+  </svg>

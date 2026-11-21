@@ -1,0 +1,72 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+model SponsorTier {
+  id           String    @id @default(cuid())
+  name         String    @unique // PLATINUM, GOLD, SILVER
+  label        String    // Platinum Partner, Gold Partner, Silver Partner
+  targetQuota  Int       @default(6) // Platinum = 6, Gold = 12, Silver = 12
+  displayOrder Int       @default(0)
+  sponsors     Sponsor[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@map("sponsor_tiers")
+}
+
+model Sponsor {
+  id               String       @id @default(cuid())
+  companyName      String
+  tier             String       // PLATINUM, GOLD, SILVER
+  tierRel          SponsorTier? @relation(fields: [tier], references: [name], onDelete: Cascade)
+  status           String       @default("CONFIRMED") // CONFIRMED, RESERVED
+  category         String       // AI & Data, Industrial IoT, Cybersecurity, Cloud & Infrastructure, etc.
+  logoUrl          String       // URL or local path (/uploads/sponsors/xxx.png)
+  websiteUrl       String?
+  shortDescription String?      @db.Text
+  displayOrder     Int          @default(0)
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  @@map("sponsors")
+}
+
+model EventUpdate {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @db.Text
+  badgeStatus String   @default("Progress") // Terkonfirmasi, Progress, Open
+  publishedAt DateTime @default(now())
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("event_updates")
+}
+
+model ScheduleSession {
+  id          String   @id @default(cuid())
+  order       Int      @default(0)
+  day         String   @default("Day 1")
+  timeSlot    String
+  period      String   @default("morning") // morning, afternoon, closing
+  category    String   // PLATINUM_KEYNOTE, OPENING, KEYNOTE_SPEECH, NETWORKING, EXHIBITION, EXECUTIVE_PANEL, CLOSING
+  title       String
+  description String   @db.Text
+  speakerName String?  @default("To Be Announced")
+  speakerRole String?  @default("Platinum Technology Partner")
+  companyName String?
+  stage       String?  @default("Panggung Utama (16x6m)")
+  status      String   @default("CONFIRMED") // TBA, CONFIRMED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("schedule_sessions")
+}

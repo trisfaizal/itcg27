@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 68" fill="none">
+    <rect width="240" height="68" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <g transform="translate(14, 16)">
+      <rect width="36" height="36" rx="6" fill="#0D2B6B" fill-opacity="0.12"/>
+      <path d="M12 2l10 18H2L12 2zm0 6l-5 9h10l-5-9z" fill="#0D2B6B" transform="scale(1) translate(6, 6)"/>
+    </g>
+    <text x="60" y="32" font-family="'Montserrat', sans-serif" font-weight="800" font-size="14" fill="#0D2B6B" letter-spacing="-0.01em">ASTRA TECH</text>
+    <text x="60" y="47" font-family="'Inter', sans-serif" font-weight="600" font-size="9" fill="#75829C" letter-spacing="0.08em">SOLUTIONS</text>
+  </svg>

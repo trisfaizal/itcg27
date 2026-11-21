@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 68" fill="none">
+    <rect width="240" height="68" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <g transform="translate(14, 16)">
+      <rect width="36" height="36" rx="6" fill="#0D2B6B" fill-opacity="0.12"/>
+      <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 4a3 3 0 013 3c0 2-3 5-3 5s-3-3-3-5a3 3 0 013-3z" fill="#0D2B6B" transform="scale(1) translate(6, 6)"/>
+    </g>
+    <text x="60" y="32" font-family="'Montserrat', sans-serif" font-weight="800" font-size="14" fill="#0D2B6B" letter-spacing="-0.01em">CYBERSHIELD</text>
+    <text x="60" y="47" font-family="'Inter', sans-serif" font-weight="600" font-size="9" fill="#75829C" letter-spacing="0.08em">DEFENSE INDONESIA</text>
+  </svg>
