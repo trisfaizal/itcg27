@@ -24,27 +24,32 @@ export default function AdminDashboardClient() {
   };
 
   return (
-    <div className="min-h-screen bg-itcg-gray-light">
+    <div className="min-h-screen bg-[#F5F7FA] relative text-[#0D2B6B]">
       
       {/* Top Admin Header */}
-      <header className="bg-itcg-navy text-white border-b-2 border-itcg-red shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="bg-gradient-to-r from-[#071A42] via-[#0D2B6B] to-[#0A2255] text-white border-b-2 border-[#E3062E] shadow-md relative overflow-hidden z-20">
+        {/* Subtle Ambient Radial Glows */}
+        <div className="absolute -right-16 -top-16 w-64 h-64 bg-[#0066E0]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute left-1/3 -bottom-16 w-64 h-64 bg-[#E3062E]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex items-center justify-between h-16 sm:h-20">
             
             <div className="flex items-center space-x-3 sm:space-x-4">
-              <Link href="/">
+              <Link href="/" className="transition-transform hover:scale-105 duration-200">
                 <img
                   src="/images/itcg-logo.svg"
                   alt="ITCG 2027"
-                  className="h-10 w-auto bg-white/95 px-2 py-1 rounded"
+                  className="h-9 sm:h-10 w-auto bg-white/95 px-2.5 py-1 rounded-xl shadow-xs border border-white/20"
                 />
               </Link>
               <div className="hidden sm:block h-6 w-px bg-white/20" />
               <div>
-                <span className="text-xs font-heading font-extrabold text-semantic-warning uppercase tracking-wider block">
-                  Panel Panitia Penyelenggara
-                </span>
-                <h1 className="text-sm sm:text-base font-heading font-extrabold text-white">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-semantic-warning/20 border border-semantic-warning/30 text-semantic-warning text-[10px] font-heading font-extrabold uppercase tracking-wider">
+                  <span className="w-1.5 h-1.5 rounded-full bg-semantic-warning shrink-0" />
+                  <span>Panel Panitia Penyelenggara</span>
+                </div>
+                <h1 className="text-sm sm:text-base font-heading font-extrabold text-white mt-0.5">
                   Dashboard Manajemen ITCG 2027
                 </h1>
               </div>
@@ -54,7 +59,7 @@ export default function AdminDashboardClient() {
               <Link
                 href="/"
                 target="_blank"
-                className="hidden md:inline-flex items-center text-xs font-semibold text-itcg-gray hover:text-white px-3 py-1.5 rounded border border-white/20 hover:border-white transition-colors"
+                className="hidden md:inline-flex items-center text-xs font-semibold text-[#E6E9F2] hover:text-white px-3 py-1.5 rounded-lg border border-white/20 hover:border-white/50 transition-colors bg-white/5"
               >
                 <span>Lihat Website Publik</span>
                 <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
@@ -62,7 +67,7 @@ export default function AdminDashboardClient() {
 
               <button
                 onClick={handleLogout}
-                className="inline-flex items-center space-x-1.5 text-xs font-heading font-bold text-white bg-itcg-red hover:bg-itcg-red-hover px-3.5 py-2 rounded-md transition-all shadow-xs"
+                className="inline-flex items-center space-x-1.5 text-xs font-heading font-bold text-white bg-[#E3062E] hover:bg-[#C00426] active:scale-95 px-3.5 py-2 rounded-lg transition-all shadow-xs"
               >
                 <LogOut className="w-3.5 h-3.5" />
                 <span>Keluar</span>
@@ -74,16 +79,16 @@ export default function AdminDashboardClient() {
       </header>
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap gap-2 border-b border-itcg-gray pb-4 mb-8">
+        <div className="flex flex-wrap gap-2 border-b border-[#E6E9F2] pb-4 mb-8">
           <button
             onClick={() => setActiveTab('sponsors')}
-            className={`inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-heading font-bold rounded-lg transition-all ${
+            className={`inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-heading font-bold rounded-xl transition-all ${
               activeTab === 'sponsors'
-                ? 'bg-itcg-navy text-white shadow-md'
-                : 'bg-white text-itcg-navy border border-itcg-gray hover:bg-gray-100'
+                ? 'bg-[#0D2B6B] text-white shadow-md ring-2 ring-[#0066E0]/20'
+                : 'bg-white text-[#0D2B6B] border border-[#E6E9F2] hover:bg-[#F8FAFC] hover:border-[#CBD5E1]'
             }`}
           >
             <Users className="w-4 h-4 mr-2" />
@@ -92,10 +97,10 @@ export default function AdminDashboardClient() {
 
           <button
             onClick={() => setActiveTab('schedule')}
-            className={`inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-heading font-bold rounded-lg transition-all ${
+            className={`inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-heading font-bold rounded-xl transition-all ${
               activeTab === 'schedule'
-                ? 'bg-itcg-navy text-white shadow-md'
-                : 'bg-white text-itcg-navy border border-itcg-gray hover:bg-gray-100'
+                ? 'bg-[#0D2B6B] text-white shadow-md ring-2 ring-[#0066E0]/20'
+                : 'bg-white text-[#0D2B6B] border border-[#E6E9F2] hover:bg-[#F8FAFC] hover:border-[#CBD5E1]'
             }`}
           >
             <Calendar className="w-4 h-4 mr-2" />
@@ -104,10 +109,10 @@ export default function AdminDashboardClient() {
 
           <button
             onClick={() => setActiveTab('quotas')}
-            className={`inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-heading font-bold rounded-lg transition-all ${
+            className={`inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-heading font-bold rounded-xl transition-all ${
               activeTab === 'quotas'
-                ? 'bg-itcg-navy text-white shadow-md'
-                : 'bg-white text-itcg-navy border border-itcg-gray hover:bg-gray-100'
+                ? 'bg-[#0D2B6B] text-white shadow-md ring-2 ring-[#0066E0]/20'
+                : 'bg-white text-[#0D2B6B] border border-[#E6E9F2] hover:bg-[#F8FAFC] hover:border-[#CBD5E1]'
             }`}
           >
             <Target className="w-4 h-4 mr-2" />
@@ -116,10 +121,10 @@ export default function AdminDashboardClient() {
 
           <button
             onClick={() => setActiveTab('updates')}
-            className={`inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-heading font-bold rounded-lg transition-all ${
+            className={`inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-heading font-bold rounded-xl transition-all ${
               activeTab === 'updates'
-                ? 'bg-itcg-navy text-white shadow-md'
-                : 'bg-white text-itcg-navy border border-itcg-gray hover:bg-gray-100'
+                ? 'bg-[#0D2B6B] text-white shadow-md ring-2 ring-[#0066E0]/20'
+                : 'bg-white text-[#0D2B6B] border border-[#E6E9F2] hover:bg-[#F8FAFC] hover:border-[#CBD5E1]'
             }`}
           >
             <Bell className="w-4 h-4 mr-2" />
