@@ -92,9 +92,14 @@ export default function LiveUpdateBoard({ updates }: LiveUpdateBoardProps) {
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-itcg-navy/75 mt-2 leading-relaxed">
-                    {item.description}
-                  </p>
+                  <div className="space-y-3 text-sm leading-relaxed text-itcg-navy/75 mt-2.5">
+                    {(item.description || '')
+                      .split(/\r?\n+/)
+                      .filter((para) => para.trim().length > 0)
+                      .map((paragraph, pIdx) => (
+                        <p key={pIdx}>{paragraph.trim()}</p>
+                      ))}
+                  </div>
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-itcg-gray/60 flex items-center justify-between text-[10px] text-itcg-gray-dark uppercase font-heading font-semibold">

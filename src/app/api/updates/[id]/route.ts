@@ -18,8 +18,8 @@ export async function PUT(
     const updated = await prisma.eventUpdate.update({
       where: { id },
       data: {
-        title: title || undefined,
-        description: description || undefined,
+        title: title !== undefined ? (typeof title === 'string' ? title.trim() : title) : undefined,
+        description: description !== undefined ? (typeof description === 'string' ? description.trim() : description) : undefined,
         badgeStatus: badgeStatus || undefined,
         publishedAt: publishedAt ? new Date(publishedAt) : undefined,
         isActive: isActive !== undefined ? Boolean(isActive) : undefined,
