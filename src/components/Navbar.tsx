@@ -11,6 +11,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const isContact = pathname === '/contact';
+  const isBooths = pathname === '/booths';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,6 +58,16 @@ export default function Navbar() {
             className="text-sm font-medium text-[#0D2B6B] hover:text-[#0066E0] transition-colors whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#0066E0]/40 rounded-md px-1 py-0.5"
           >
             Partners
+          </Link>
+          <Link
+            href="/booths"
+            className={`text-sm transition-colors whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#0066E0]/40 rounded-md px-1 py-0.5 ${
+              isBooths
+                ? 'text-[#0066E0] font-semibold'
+                : 'font-medium text-[#0D2B6B] hover:text-[#0066E0]'
+            }`}
+          >
+            Booths
           </Link>
           <Link
             href="/#schedule"
@@ -120,6 +131,17 @@ export default function Navbar() {
               className="px-3.5 py-2.5 rounded-xl text-sm font-medium text-[#0D2B6B] hover:bg-[#F5F7FA] hover:text-[#0066E0] transition-colors"
             >
               Partners
+            </Link>
+            <Link
+              href="/booths"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`px-3.5 py-2.5 rounded-xl text-sm transition-colors ${
+                isBooths
+                  ? 'text-[#0066E0] font-semibold bg-itcg-blue-light/50'
+                  : 'font-medium text-[#0D2B6B] hover:bg-[#F5F7FA] hover:text-[#0066E0]'
+              }`}
+            >
+              Booths & Floor Plan
             </Link>
             <Link
               href="/#schedule"

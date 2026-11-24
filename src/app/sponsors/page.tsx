@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SponsorGrid from '@/components/SponsorGrid';
@@ -19,6 +20,7 @@ import {
   FileCheck,
   ShieldCheck,
   ArrowRight,
+  LayoutGrid,
 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -97,6 +99,29 @@ export default async function SponsorsPage() {
             </div>
 
             <SponsorGrid tiers={tiers} showOpenSlots={true} showQuotaNumbers={false} />
+
+            {/* Interactive Floor Plan Callout */}
+            <div className="mt-10 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-itcg-navy to-[#15347a] text-white border border-white/10 shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="space-y-2 max-w-2xl">
+                <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-bold tracking-wider uppercase bg-white/10 text-itcg-blue border border-white/15">
+                  <LayoutGrid className="w-3.5 h-3.5" />
+                  <span>Denah Booth 3D Interaktif</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-white">
+                  Ingin Memilih Posisi Booth Spesifik?
+                </h3>
+                <p className="text-sm text-white/80 leading-relaxed">
+                  Jelajahi visualisasi denah ballroom 3D render, cek spesifikasi masing-masing slot (P-01 s/d P-06, G-01 s/d G-12, S-01 s/d S-06), dan booking booth pilihan Anda secara langsung.
+                </p>
+              </div>
+              <Link
+                href="/booths"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-itcg-blue hover:bg-itcg-blue-hover text-white font-heading font-bold text-sm shadow-md transition-all shrink-0"
+              >
+                <span>Buka Denah Interaktif</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </section>
 

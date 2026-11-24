@@ -85,6 +85,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/booths" className="hover:text-white transition-colors text-itcg-blue-light font-medium">
+                  Denah Booth &amp; Booking
+                </Link>
+              </li>
+              <li>
                 <Link href="/#venue" className="hover:text-white transition-colors">
                   Ballroom Floor Plan
                 </Link>

@@ -33,7 +33,7 @@ export async function getLiveUpdates() {
     {
       id: 'fb-3',
       title: 'Opening of Sponsorship Partnership Reservations',
-      description: 'Slot kemitraan Platinum (kuota 6), Gold (kuota 12), dan Silver (kuota 12) resmi dibuka untuk vendor teknologi industri & enterprise. Kuota sistem tetap fleksibel mengakomodasi penambahan mitra industri terkonfirmasi.',
+      description: 'Slot kemitraan Platinum (kuota 6), Gold (kuota 12), dan Silver (kuota 6) resmi dibuka untuk vendor teknologi industri & enterprise. Kuota sistem tetap fleksibel mengakomodasi penambahan mitra industri terkonfirmasi.',
       badgeStatus: 'Open',
       publishedAt: new Date('2026-11-01T09:00:00Z'),
       isActive: true,
@@ -213,9 +213,9 @@ export async function getSponsorshipTiersWithSponsors() {
     {
       name: 'SILVER',
       label: 'Silver Partner',
-      targetQuota: 12,
+      targetQuota: 6,
       confirmedCount: 4,
-      totalDisplayCount: 12,
+      totalDisplayCount: 6,
       sponsors: [
         {
           id: 'sp-12',
@@ -461,5 +461,303 @@ export async function getScheduleSessions(): Promise<ScheduleSessionItem[]> {
   }
 
   return fallbackScheduleSessions;
+}
+
+export interface BoothItem {
+  id: string;
+  boothNumber: string;
+  tier: 'PLATINUM' | 'GOLD' | 'SILVER';
+  positionZone: 'TOP' | 'BOTTOM' | 'LEFT';
+  status: 'AVAILABLE' | 'RESERVED' | 'BOOKED';
+  sponsorId?: string | null;
+  sponsorName?: string | null;
+  logoUrl?: string | null;
+  description?: string | null;
+  displayOrder: number;
+}
+
+export const fallbackBooths: BoothItem[] = [
+  // PLATINUM (6 Slots: P-01..P-03 TOP, P-04..P-06 BOTTOM)
+  {
+    id: 'b-p01',
+    boothNumber: 'P-01',
+    tier: 'PLATINUM',
+    positionZone: 'TOP',
+    status: 'BOOKED',
+    sponsorName: 'Nusantara Cloud Systems',
+    logoUrl: '/images/sponsors/nusantara-cloud.svg',
+    description: 'Booth Platinum sayap atas, posisi terdepan dekat panggung utama dan videotron.',
+    displayOrder: 1,
+  },
+  {
+    id: 'b-p02',
+    boothNumber: 'P-02',
+    tier: 'PLATINUM',
+    positionZone: 'TOP',
+    status: 'BOOKED',
+    sponsorName: 'Quantum Industrial AI',
+    logoUrl: '/images/sponsors/quantum-ai.svg',
+    description: 'Booth Platinum sayap atas, visibilitas langsung dari area meja bundar peserta.',
+    displayOrder: 2,
+  },
+  {
+    id: 'b-p03',
+    boothNumber: 'P-03',
+    tier: 'PLATINUM',
+    positionZone: 'TOP',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Platinum sayap atas, akses terdekat ke koridor panggung dan ruang VIP.',
+    displayOrder: 3,
+  },
+  {
+    id: 'b-p04',
+    boothNumber: 'P-04',
+    tier: 'PLATINUM',
+    positionZone: 'BOTTOM',
+    status: 'BOOKED',
+    sponsorName: 'Astra Tech Solutions',
+    logoUrl: '/images/sponsors/astra-tech.svg',
+    description: 'Booth Platinum sayap bawah, posisi terdepan dekat panggung utama dan sound system.',
+    displayOrder: 4,
+  },
+  {
+    id: 'b-p05',
+    boothNumber: 'P-05',
+    tier: 'PLATINUM',
+    positionZone: 'BOTTOM',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Platinum sayap bawah, sudut pandang optimal dari seluruh meja peserta.',
+    displayOrder: 5,
+  },
+  {
+    id: 'b-p06',
+    boothNumber: 'P-06',
+    tier: 'PLATINUM',
+    positionZone: 'BOTTOM',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Platinum sayap bawah, akses cepat ke pintu samping dan panggung.',
+    displayOrder: 6,
+  },
+
+  // GOLD (12 Slots: G-01..G-06 TOP, G-07..G-12 BOTTOM)
+  {
+    id: 'b-g01',
+    boothNumber: 'G-01',
+    tier: 'GOLD',
+    positionZone: 'TOP',
+    status: 'BOOKED',
+    sponsorName: 'Cikarang Digital Network',
+    logoUrl: '/images/sponsors/cikarang-digital.svg',
+    description: 'Booth Gold sayap atas, dekat pintu masuk atas dengan arus sirkulasi tinggi.',
+    displayOrder: 7,
+  },
+  {
+    id: 'b-g02',
+    boothNumber: 'G-02',
+    tier: 'GOLD',
+    positionZone: 'TOP',
+    status: 'BOOKED',
+    sponsorName: 'CyberShield Industrial',
+    logoUrl: '/images/sponsors/cybershield.svg',
+    description: 'Booth Gold sayap atas, koridor tengah alur peserta.',
+    displayOrder: 8,
+  },
+  {
+    id: 'b-g03',
+    boothNumber: 'G-03',
+    tier: 'GOLD',
+    positionZone: 'TOP',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Gold sayap atas, menghadap barisan meja peserta.',
+    displayOrder: 9,
+  },
+  {
+    id: 'b-g04',
+    boothNumber: 'G-04',
+    tier: 'GOLD',
+    positionZone: 'TOP',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Gold sayap atas, posisi strategis menuju zona Platinum.',
+    displayOrder: 10,
+  },
+  {
+    id: 'b-g05',
+    boothNumber: 'G-05',
+    tier: 'GOLD',
+    positionZone: 'TOP',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Gold sayap atas, akses interaksi bisnis luas.',
+    displayOrder: 11,
+  },
+  {
+    id: 'b-g06',
+    boothNumber: 'G-06',
+    tier: 'GOLD',
+    positionZone: 'TOP',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Gold sayap atas, berdampingan langsung dengan zona Platinum.',
+    displayOrder: 12,
+  },
+  {
+    id: 'b-g07',
+    boothNumber: 'G-07',
+    tier: 'GOLD',
+    positionZone: 'BOTTOM',
+    status: 'BOOKED',
+    sponsorName: 'Smart Factory Automation',
+    logoUrl: '/images/sponsors/smart-factory.svg',
+    description: 'Booth Gold sayap bawah, dekat pintu masuk bawah dengan arus registrasi.',
+    displayOrder: 13,
+  },
+  {
+    id: 'b-g08',
+    boothNumber: 'G-08',
+    tier: 'GOLD',
+    positionZone: 'BOTTOM',
+    status: 'BOOKED',
+    sponsorName: 'Lippo Logistics Tech',
+    logoUrl: '/images/sponsors/lippo-logistics.svg',
+    description: 'Booth Gold sayap bawah, posisi strategis sirkulasi peserta.',
+    displayOrder: 14,
+  },
+  {
+    id: 'b-g09',
+    boothNumber: 'G-09',
+    tier: 'GOLD',
+    positionZone: 'BOTTOM',
+    status: 'BOOKED',
+    sponsorName: 'Apex Robotic Vision',
+    logoUrl: '/images/sponsors/apex-robotic.svg',
+    description: 'Booth Gold sayap bawah, koridor interaksi delegasi pabrik.',
+    displayOrder: 15,
+  },
+  {
+    id: 'b-g10',
+    boothNumber: 'G-10',
+    tier: 'GOLD',
+    positionZone: 'BOTTOM',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Gold sayap bawah, daya listrik terdedikasi 1.300 Watt.',
+    displayOrder: 16,
+  },
+  {
+    id: 'b-g11',
+    boothNumber: 'G-11',
+    tier: 'GOLD',
+    positionZone: 'BOTTOM',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Gold sayap bawah, visibilitas langsung meja banquet.',
+    displayOrder: 17,
+  },
+  {
+    id: 'b-g12',
+    boothNumber: 'G-12',
+    tier: 'GOLD',
+    positionZone: 'BOTTOM',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Gold sayap bawah, berdampingan langsung dengan zona Platinum.',
+    displayOrder: 18,
+  },
+
+  // SILVER (6 Slots: S-01..S-06 LEFT, Between 2 Entrance Doors)
+  {
+    id: 'b-s01',
+    boothNumber: 'S-01',
+    tier: 'SILVER',
+    positionZone: 'LEFT',
+    status: 'BOOKED',
+    sponsorName: 'SecureID Authentication',
+    logoUrl: '/images/sponsors/secureid.svg',
+    description: 'Booth Silver dinding belakang, dekat akses Pintu Masuk Atas.',
+    displayOrder: 19,
+  },
+  {
+    id: 'b-s02',
+    boothNumber: 'S-02',
+    tier: 'SILVER',
+    positionZone: 'LEFT',
+    status: 'BOOKED',
+    sponsorName: 'Industrial Edge Devices',
+    logoUrl: '/images/sponsors/industrial-edge.svg',
+    description: 'Booth Silver dinding belakang, barisan meja promosi display.',
+    displayOrder: 20,
+  },
+  {
+    id: 'b-s03',
+    boothNumber: 'S-03',
+    tier: 'SILVER',
+    positionZone: 'LEFT',
+    status: 'BOOKED',
+    sponsorName: 'Databox Analytics',
+    logoUrl: '/images/sponsors/databox.svg',
+    description: 'Booth Silver dinding belakang, pusat sirkulasi pintu masuk.',
+    displayOrder: 21,
+  },
+  {
+    id: 'b-s04',
+    boothNumber: 'S-04',
+    tier: 'SILVER',
+    positionZone: 'LEFT',
+    status: 'BOOKED',
+    sponsorName: 'Cikarang Fiber Optic',
+    logoUrl: '/images/sponsors/cikarang-fiber.svg',
+    description: 'Booth Silver dinding belakang, area pameran produk perangkat.',
+    displayOrder: 22,
+  },
+  {
+    id: 'b-s05',
+    boothNumber: 'S-05',
+    tier: 'SILVER',
+    positionZone: 'LEFT',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Silver dinding belakang, meja promosi dan display brosur.',
+    displayOrder: 23,
+  },
+  {
+    id: 'b-s06',
+    boothNumber: 'S-06',
+    tier: 'SILVER',
+    positionZone: 'LEFT',
+    status: 'AVAILABLE',
+    sponsorName: null,
+    logoUrl: null,
+    description: 'Booth Silver dinding belakang, dekat akses Pintu Masuk Bawah.',
+    displayOrder: 24,
+  },
+];
+
+export async function getBooths(): Promise<BoothItem[]> {
+  try {
+    const booths = await prisma.booth.findMany({
+      orderBy: { displayOrder: 'asc' },
+    });
+    if (booths.length > 0) return booths as unknown as BoothItem[];
+  } catch (error) {
+    console.warn('Database not ready or empty, using fallback booths:', error);
+  }
+
+  return fallbackBooths;
 }
 

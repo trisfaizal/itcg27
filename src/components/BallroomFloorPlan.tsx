@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MapPin, Navigation, Check, Info } from 'lucide-react';
+import Link from 'next/link';
+import { MapPin, Navigation, Check, Info, LayoutGrid } from 'lucide-react';
 
 interface ZoneDetail {
   id: string;
@@ -86,14 +87,14 @@ const zones: Record<string, ZoneDetail> = {
     badge: 'Tier Platinum',
     badgeColor: 'bg-itcg-navy text-white',
     dimensions: '3.0 m x 3.0 m per booth',
-    capacity: '6 Mitra Platinum (3 Booth Sayap Kiri & 3 Booth Sayap Kanan)',
+    capacity: '6 Mitra Platinum (P-01 s/d P-03 Sayap Atas & P-04 s/d P-06 Sayap Bawah)',
     power: 'Daya Listrik 2.200 Watt per booth',
-    description: 'Klaster booth eksklusif di posisi depan mengapit area duduk peserta dan akses panggung utama. Menjamin visibilitas maksimal dan interaksi langsung dengan audiens eksekutif.',
+    description: 'Klaster booth eksklusif 3.0x3.0m terdekat dengan Panggung Acara (3 booth di sayap atas dan 3 booth di sayap bawah) dengan karpet merah dan partisi putih modern. Dilengkapi alokasi Kursi Teater Khusus Tim Sponsor di Lantai Atas (Mezzanine).',
     amenities: [
-      'Partisi R8 Custom & Fascia Nama Perusahaan',
-      '1 Meja Dealing, 4 Kursi Lipat, 1 Meja Display',
-      'Stop Kontak Listrik',
-      'Smart TV LED (Optional Add-on)',
+      'Posisi terdepan paling dekat dengan Panggung Utama & LED Videotron',
+      'Alokasi Kursi Teater Khusus Tim Sponsor di Lantai Atas (Mezzanine)',
+      'Partisi R8 Custom, 1 Meja Dealing, 4 Kursi Lipat & 1 Meja Display',
+      'Stop Kontak Listrik 2.200 Watt Terdedikasi',
       '1 Night Hotel Stay di Sutan Raja Hotel (Include)',
     ],
   },
@@ -103,14 +104,14 @@ const zones: Record<string, ZoneDetail> = {
     badge: 'Tier Gold',
     badgeColor: 'bg-itcg-blue text-white',
     dimensions: '2.0 m x 2.0 m per booth',
-    capacity: '12 Mitra Gold (6 Booth Sayap Kiri & 6 Booth Sayap Kanan)',
+    capacity: '12 Mitra Gold (G-01 s/d G-06 Sayap Atas & G-07 s/d G-12 Sayap Bawah)',
     power: 'Daya Listrik 1.300 Watt per booth',
-    description: 'Klaster booth pameran berposisi strategis tepat di bawah klaster Platinum pada sayap kiri dan kanan, memberikan akses langsung ke alur sirkulasi peserta.',
+    description: 'Klaster booth pameran 2.0x2.0m berposisi strategis berjejer 6 booth di sayap atas dan 6 booth di sayap bawah menuju zona Platinum. Menjamin alur sirkulasi kontak bisnis intensif.',
     amenities: [
-      'Partisi R8 Standar & Fascia Nama Booth',
-      '1 Meja Informasi & 2 Kursi Lipat',
-      'Stop Kontak Listrik',
-      'Smart TV LED (Optional Add-on)',
+      'Posisi koridor utama alur sirkulasi peserta menuju panggung',
+      'Alokasi Kursi Teater Khusus Tim Sponsor di Lantai Atas',
+      'Partisi R8 Standar, 1 Meja Informasi & 2 Kursi Lipat',
+      'Stop Kontak Listrik 1.300 Watt',
       'Penyebaran flyer & profil perusahaan di area registrasi',
     ],
   },
@@ -120,14 +121,30 @@ const zones: Record<string, ZoneDetail> = {
     badge: 'Tier Silver',
     badgeColor: 'bg-itcg-gray-dark text-white',
     dimensions: 'Promotional Table Area (1.5 x 1.5 m per booth)',
-    capacity: '12 Mitra Silver (6 Booth Sayap Kiri & 6 Booth Sayap Kanan)',
+    capacity: '6 Mitra Silver (S-01 s/d S-06 di Dinding Belakang di Antara Dua Pintu Masuk)',
     power: 'Daya Listrik 450 Watt per booth',
-    description: 'Deretan meja promosi Silver di sisi kiri dan kanan belakang area duduk peserta, tepat di samping FOH Control Desk.',
+    description: 'Deretan 6 meja promosi Silver di dinding kiri belakang ballroom tepat di antara kedua pintu masuk utama, menyambut setiap peserta saat memasuki ballroom.',
     amenities: [
+      'Posisi strategis diapit dua Pintu Masuk ballroom',
       '1 Meja Promosi Display & 2 Kursi',
-      'Stop Kontak Listrik',
-      'Fasilitas pasang X-Banner/Roll-up Banner mandiri',
-      'Penyisipan brosur perusahaan di Goodie Bag peserta',
+      'Stop Kontak Listrik 450 Watt',
+      'Fasilitas pasang Standing / Roll-up Banner mandiri',
+    ],
+  },
+  mezzanine: {
+    id: 'mezzanine',
+    name: 'Lantai Atas & Kursi Teater Tim Sponsor',
+    badge: 'Lantai Atas (Mezzanine)',
+    badgeColor: 'bg-itcg-navy text-white',
+    dimensions: 'Balkon Mezzanine Menghadap Panggung Acara',
+    capacity: 'Area Kursi Bergaya Teater Khusus Tim Sponsor & FOH',
+    power: 'Dedicated Production & Lighting Power',
+    description: 'Lantai atas (Mezzanine) yang menghadap langsung ke panggung utama ballroom, dilengkapi barisan kursi bergaya teater yang disediakan khusus untuk tim sponsor memantau jalannya acara dengan nyaman, serta posisi FOH (Front of House) produksi audio visual.',
+    amenities: [
+      'Deretan kursi teater eksklusif khusus tim sponsor',
+      'Pandangan panorama elevated langsung ke panggung utama',
+      'Pusat kendali FOH lighting, audio & multi-camera streaming',
+      'Akses tangga langsung dari area pre-function',
     ],
   },
   access_corridor: {
@@ -246,15 +263,22 @@ export default function BallroomFloorPlan() {
             </p>
           </div>
 
-          {/* External Google Maps Button */}
-          <div className="mt-6 md:mt-0">
+          {/* Action Buttons */}
+          <div className="mt-6 md:mt-0 flex flex-wrap items-center gap-3">
+            <Link
+              href="/booths"
+              className="inline-flex items-center space-x-2 px-4 py-2.5 min-h-[44px] text-xs sm:text-sm font-heading font-bold text-white bg-itcg-navy hover:bg-[#163a8a] rounded-xl shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-itcg-navy/40"
+            >
+              <LayoutGrid className="w-4 h-4 text-itcg-blue" />
+              <span>Denah 3D &amp; Booking Booth</span>
+            </Link>
             <a
               href="https://maps.google.com/?q=Sutan+Raja+Hotel+and+Convention+Centre+Soreang+Bandung"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-4 py-2.5 min-h-[44px] text-xs sm:text-sm font-heading font-bold text-white bg-itcg-blue hover:bg-itcg-blue-hover rounded-xl shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-itcg-blue/40"
+              className="inline-flex items-center space-x-2 px-4 py-2.5 min-h-[44px] text-xs sm:text-sm font-heading font-bold text-itcg-navy bg-white hover:bg-itcg-gray-light border border-itcg-gray rounded-xl shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-itcg-blue/40"
             >
-              <Navigation className="w-4 h-4" />
+              <Navigation className="w-4 h-4 text-itcg-blue" />
               <span>Open in Google Maps</span>
             </a>
           </div>

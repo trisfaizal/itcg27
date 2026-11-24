@@ -3,15 +3,16 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ShieldCheck, LogOut, Users, Target, Bell, ExternalLink, Calendar } from 'lucide-react';
+import { ShieldCheck, LogOut, Users, Target, Bell, ExternalLink, Calendar, Layers } from 'lucide-react';
 import AdminSponsorsTab from '@/components/Admin/AdminSponsorsTab';
+import AdminBoothsTab from '@/components/Admin/AdminBoothsTab';
 import AdminScheduleTab from '@/components/Admin/AdminScheduleTab';
 import AdminQuotasTab from '@/components/Admin/AdminQuotasTab';
 import AdminUpdatesTab from '@/components/Admin/AdminUpdatesTab';
 
 export default function AdminDashboardClient() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<'sponsors' | 'schedule' | 'quotas' | 'updates'>('sponsors');
+  const [activeTab, setActiveTab] = useState<'sponsors' | 'booths' | 'schedule' | 'quotas' | 'updates'>('sponsors');
 
   const handleLogout = async () => {
     try {
@@ -96,6 +97,18 @@ export default function AdminDashboardClient() {
           </button>
 
           <button
+            onClick={() => setActiveTab('booths')}
+            className={`inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-heading font-bold rounded-xl transition-all ${
+              activeTab === 'booths'
+                ? 'bg-[#0D2B6B] text-white shadow-md ring-2 ring-[#0066E0]/20'
+                : 'bg-white text-[#0D2B6B] border border-[#E6E9F2] hover:bg-[#F8FAFC] hover:border-[#CBD5E1]'
+            }`}
+          >
+            <Layers className="w-4 h-4 mr-2" />
+            <span>Manajemen Booth</span>
+          </button>
+
+          <button
             onClick={() => setActiveTab('schedule')}
             className={`inline-flex items-center px-4 py-2.5 text-xs sm:text-sm font-heading font-bold rounded-xl transition-all ${
               activeTab === 'schedule'
@@ -134,6 +147,7 @@ export default function AdminDashboardClient() {
 
         {/* Tab Content Panels */}
         {activeTab === 'sponsors' && <AdminSponsorsTab />}
+        {activeTab === 'booths' && <AdminBoothsTab />}
         {activeTab === 'schedule' && <AdminScheduleTab />}
         {activeTab === 'quotas' && <AdminQuotasTab />}
         {activeTab === 'updates' && <AdminUpdatesTab />}

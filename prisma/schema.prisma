@@ -12,7 +12,7 @@ model SponsorTier {
   id           String    @id @default(cuid())
   name         String    @unique // PLATINUM, GOLD, SILVER
   label        String    // Platinum Partner, Gold Partner, Silver Partner
-  targetQuota  Int       @default(6) // Platinum = 6, Gold = 12, Silver = 12
+  targetQuota  Int       @default(6) // Platinum = 6, Gold = 12, Silver = 6
   displayOrder Int       @default(0)
   sponsors     Sponsor[]
   createdAt    DateTime  @default(now())
@@ -69,4 +69,21 @@ model ScheduleSession {
   updatedAt   DateTime @updatedAt
 
   @@map("schedule_sessions")
+}
+
+model Booth {
+  id           String    @id @default(cuid())
+  boothNumber  String    @unique // P-01..P-06, G-01..G-12, S-01..S-06
+  tier         String    // PLATINUM, GOLD, SILVER
+  positionZone String    // TOP, BOTTOM, LEFT
+  status       String    @default("AVAILABLE") // AVAILABLE, RESERVED, BOOKED
+  sponsorId    String?
+  sponsorName  String?
+  logoUrl      String?
+  description  String?   @db.Text
+  displayOrder Int       @default(0)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@map("booths")
 }

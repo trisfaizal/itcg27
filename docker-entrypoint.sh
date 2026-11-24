@@ -6,7 +6,7 @@ echo "  KOMITKABE 6th IT Community Gathering 2027 (ITCG 2027)   "
 echo "=========================================================="
 
 # Ensure upload directory exists with write permissions
-mkdir -p /app/public/uploads/sponsors
+mkdir -p /app/public/uploads/sponsors /app/public/uploads/booths
 chmod -R 777 /app/public/uploads || true
 
 # Wait for MySQL database to be reachable if DATABASE_URL contains db:3306

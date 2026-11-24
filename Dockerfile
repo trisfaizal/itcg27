@@ -51,7 +51,7 @@ COPY docker-entrypoint.sh ./docker-entrypoint.sh
 RUN chmod +x ./docker-entrypoint.sh
 
 # Ensure uploads directory structure exists
-RUN mkdir -p /app/public/uploads/sponsors
+RUN mkdir -p /app/public/uploads/sponsors /app/public/uploads/booths
 
 EXPOSE 3000
 
