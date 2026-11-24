@@ -5,16 +5,16 @@ services:
     restart: unless-stopped
     command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
-      MYSQL_ROOT_PASSWORD: itcg_root_password2027
-      MYSQL_DATABASE: itcg2027_db
-      MYSQL_USER: itcg_user
-      MYSQL_PASSWORD: itcg_password2027
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "itcg_user", "-pitcg_password2027"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "${MYSQL_USER}", "-p${MYSQL_PASSWORD}"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -33,7 +33,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      DATABASE_URL: "mysql://itcg_user:itcg_password2027@db:3306/itcg2027_db"
+      DATABASE_URL: ${DATABASE_URL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       SESSION_SECRET: ${SESSION_SECRET}
       NODE_ENV: production

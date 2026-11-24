@@ -23,7 +23,11 @@ cp .env.example .env
 ```
 Isi konfigurasi default pada `.env`:
 ```env
-DATABASE_URL="mysql://itcg_user:itcg_password2027@db:3306/itcg2027_db"
+MYSQL_ROOT_PASSWORD="your_mysql_root_password_here"
+MYSQL_DATABASE="itcg2027_db"
+MYSQL_USER="itcg_user"
+MYSQL_PASSWORD="your_db_password_here"
+DATABASE_URL="mysql://itcg_user:your_db_password_here@localhost:3306/itcg2027_db"
 ADMIN_PASSWORD="komitkabe_admin_2027"
 NODE_ENV="production"
 PORT=3000

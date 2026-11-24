@@ -9,6 +9,11 @@ echo "=========================================================="
 mkdir -p /app/public/uploads/sponsors /app/public/uploads/booths
 chmod -R 777 /app/public/uploads || true
 
+# If DATABASE_URL points to localhost/127.0.0.1 within the container network, translate it to db:3306
+if echo "$DATABASE_URL" | grep -qE "@(localhost|127\.0\.0\.1):3306"; then
+  export DATABASE_URL="$(echo "$DATABASE_URL" | sed -E 's/@(localhost|127\.0\.0\.1):3306/@db:3306/')"
+fi
+
 # Wait for MySQL database to be reachable if DATABASE_URL contains db:3306
 echo "⏳ Verifying database connectivity..."
 for i in $(seq 1 30); do
