@@ -14,6 +14,7 @@ import {
   Users,
   Compass,
   Eye,
+  Printer,
 } from 'lucide-react';
 import { BoothItem, fallbackBooths } from '@/lib/data';
 
@@ -799,8 +800,31 @@ export default function InteractiveBoothMap() {
               </div>
             </div>
 
-            {/* Modal Actions: Single Tutup Button (No Booking Form or Button) */}
-            <div className="p-4 sm:p-5 bg-itcg-gray-light border-t border-itcg-gray flex items-center justify-end">
+            {/* Modal Actions */}
+            <div className="p-4 sm:p-5 bg-itcg-gray-light border-t border-itcg-gray flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  const targetTier = selectedBooth.tier;
+                  setSelectedBooth(null);
+                  setTimeout(() => {
+                    window.dispatchEvent(
+                      new CustomEvent('select-booth-spec', {
+                        detail: { tier: targetTier },
+                      })
+                    );
+                    const el = document.getElementById('printing-specs');
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 60);
+                }}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-bold text-itcg-blue hover:text-white bg-blue-50 hover:bg-itcg-blue border border-blue-200 hover:border-itcg-blue transition-all shadow-xs"
+              >
+                <Printer className="w-4 h-4" />
+                <span>Lihat Ukuran Printing</span>
+              </button>
+
               <button
                 type="button"
                 onClick={() => setSelectedBooth(null)}

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InteractiveBoothMap from '@/components/InteractiveBoothMap';
+import BoothPrintingSpecs from '@/components/BoothPrintingSpecs';
 import { MapPin, Users, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -77,6 +78,9 @@ export default function BoothsPage() {
 
           {/* Interactive Map & 3D Render Gallery Component */}
           <InteractiveBoothMap />
+
+          {/* Section: Detail Ukuran Printing Booth Sponsor */}
+          <BoothPrintingSpecs />
 
         </div>
       </main>
