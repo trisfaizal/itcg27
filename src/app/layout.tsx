@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 export const metadata: Metadata = {
   title: 'ITCG 2027: KOMITKABE 6th IT Community Gathering',
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="id" className="scroll-smooth font-body">
       <body className="min-h-screen bg-white text-itcg-navy antialiased selection:bg-itcg-blue selection:text-white">
         {children}
+        <ScrollToTopButton />
       </body>
     </html>
   );
