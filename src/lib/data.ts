@@ -5,7 +5,6 @@ export async function getLiveUpdates() {
     const updates = await prisma.eventUpdate.findMany({
       where: { isActive: true },
       orderBy: { publishedAt: 'desc' },
-      take: 6,
     });
     if (updates.length > 0) return updates;
   } catch (error) {
