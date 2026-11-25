@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -93,15 +93,19 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        {/* Right: CTA Button & Mobile Toggle */}
+        {/* Right: KOMITKABE Button & Mobile Toggle */}
         <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
-          {/* CTA: Become a Sponsor */}
-          <Link
-            href="/sponsors"
-            className="hidden sm:inline-flex items-center justify-center bg-[#E3062E] hover:bg-[#c20527] text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl transition-colors shadow-xs whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#E3062E]/40"
+          {/* Primary External Action: KOMITKABE Main Portal */}
+          <a
+            href="https://komitkabe.id"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center justify-center gap-1.5 bg-[#0D2B6B] hover:bg-[#0066E0] text-white text-xs sm:text-sm font-heading font-bold px-4 sm:px-5 py-2.5 rounded-xl transition-all shadow-xs whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-[#0066E0]/40 group"
+            title="Kunjungi Portal Utama KOMITKABE"
           >
-            <span>Become a Sponsor</span>
-          </Link>
+            <span>KOMITKABE</span>
+            <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-itcg-blue-light group-hover:text-white transition-colors" />
+          </a>
 
           {/* Mobile Menu Button (md:hidden) */}
           <button
@@ -169,13 +173,16 @@ export default function Navbar() {
               Contact
             </Link>
             <div className="pt-2 border-t border-[#E6E9F2] mt-1">
-              <Link
-                href="/sponsors"
+              <a
+                href="https://komitkabe.id"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center px-4 py-2.5 min-h-[44px] text-xs sm:text-sm font-heading font-extrabold text-white bg-[#E3062E] hover:bg-[#c20527] rounded-xl transition-colors shadow-xs"
+                className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 min-h-[44px] text-xs sm:text-sm font-heading font-bold text-white bg-[#0D2B6B] hover:bg-[#0066E0] rounded-xl transition-colors shadow-xs"
               >
-                Become a Sponsor
-              </Link>
+                <span>Portal Utama KOMITKABE</span>
+                <ArrowUpRight className="w-4 h-4 text-white" />
+              </a>
             </div>
           </div>
         )}

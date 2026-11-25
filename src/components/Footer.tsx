@@ -17,18 +17,32 @@ export default function Footer() {
           {/* Column 1 (span 4): Brand & Community Identity */}
           <div className="md:col-span-4 space-y-4">
             {/* Pure White Container with rounded-xl for KOMITKABE Official Logo */}
-            <div className="inline-flex items-center bg-white rounded-xl px-4 py-2.5 shadow-sm">
+            <a
+              href="https://komitkabe.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center bg-white rounded-xl px-4 py-2.5 shadow-sm hover:ring-2 hover:ring-[#0066E0]/50 transition-all group"
+              title="Kunjungi Website Resmi KOMITKABE"
+            >
               <img
                 src="/images/komitkabe-logo.png"
                 alt="KOMITKABE - Komunitas IT Kawasan Industri"
-                className="h-9 sm:h-10 w-auto object-contain"
+                className="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:scale-105"
               />
-            </div>
+            </a>
 
             <div className="space-y-1">
-              <h3 className="text-xl font-heading font-extrabold tracking-tight text-white">
-                KOMITKABE
-              </h3>
+              <a
+                href="https://komitkabe.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block group focus:outline-none"
+                title="Kunjungi Website Resmi KOMITKABE"
+              >
+                <h3 className="text-xl font-heading font-extrabold tracking-tight text-white group-hover:text-itcg-blue-light transition-colors">
+                  KOMITKABE
+                </h3>
+              </a>
               <p className="text-xs sm:text-sm font-heading font-bold text-itcg-red italic tracking-wide">
                 The Power of Collaborations: Komunitas IT Kawasan Industri
               </p>
@@ -37,6 +51,19 @@ export default function Footer() {
             <p className="text-xs sm:text-sm text-itcg-gray/80 leading-relaxed max-w-sm">
               Wadah kolaborasi profesional, praktisi, dan pimpinan teknologi informasi kawasan industri Karawang, Bekasi, dan Purwakarta (mencakup EJIP, MM2100, Jababeka, GIIC, Suryacipta dan sekitarnya) sejak tahun 2006.
             </p>
+
+            <div className="pt-1">
+              <a
+                href="https://komitkabe.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-itcg-blue-light hover:text-white transition-colors group"
+                title="Kunjungi Website Resmi KOMITKABE"
+              >
+                <span>Kunjungi Website Resmi</span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
           </div>
 
           {/* Column 2 (span 3): Event & Venue Details */}
@@ -149,7 +176,7 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyright & Event Registration */}
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-itcg-gray/60 gap-2">
-          <p>© 2027 KOMITKABE (Komunitas IT Kawasan Industri). All rights reserved.</p>
+          <p>© 2027 <a href="https://komitkabe.id" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors underline-offset-2 hover:underline">KOMITKABE</a> (Komunitas IT Kawasan Industri). All rights reserved.</p>
           <p className="font-heading font-bold text-xs text-white/80">
             One Community • ITCG 2027
           </p>
